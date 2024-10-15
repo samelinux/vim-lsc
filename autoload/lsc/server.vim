@@ -59,14 +59,14 @@ function! lsc#server#exit() abort
       call add(l:pending, l:server.config.name)
     endif
   endfor
-  let l:reported = []
-  while len(l:pending) > 0 && reltimefloat(reltime(l:exit_start)) <= 5.0
-     if reltimefloat(reltime(l:exit_start)) >= 1.0 && l:pending != l:reported
-      echo 'Waiting for language server exit: '.join(l:pending, ', ')
-      let l:reported = copy(l:pending)
-     endif
-    sleep 100m
-  endwhile
+"  let l:reported = []
+"  while len(l:pending) > 0 && reltimefloat(reltime(l:exit_start)) <= 5.0
+"     if reltimefloat(reltime(l:exit_start)) >= 1.0 && l:pending != l:reported
+"      echo 'Waiting for language server exit: '.join(l:pending, ', ')
+"      let l:reported = copy(l:pending)
+"     endif
+"    sleep 100m
+"  endwhile
   return len(l:pending) == 0
 endfunction
 
